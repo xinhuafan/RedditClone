@@ -1,0 +1,27 @@
+extends layout
+ 
+block content
+    form.form-horizontal(method='post')
+      fieldset
+        legend User Register
+        .control-group
+          label.control-label(for='username') Username
+          .controls
+            input#username.input-xlarge(type='text', name='username')
+        .control-group
+          label.control-label(for='email') E-mail
+          .controls
+            input#email.input-xlarge(type='email', name='email')
+        .control-group
+          label.control-label(for='password') Password
+          .controls
+            input#password.input-xlarge(type='password', name='password')
+        .control-group
+          label.control-label(for='password-repeat') Re-enter Password
+          .controls
+            input#password-repeat.input-xlarge(type='password', name='password-repeat')
+        .form-actions
+          p(style='padding:30')
+          a(href='/')
+           button.btn.btn-primary(type='submit') Register
+          a.btn.btn-primary(style='margin-left: 15px' href='/') Back to mian Page as tourist

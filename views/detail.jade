@@ -1,0 +1,29 @@
+extends layout
+
+mixin commentshow(comments)
+  -each comment in comments
+   li 
+    .breadcrumb
+       h5.card-title=comment['title']
+       p.card-title='write by  '+comment['posterid']
+       p.card-text=comment['content']
+ 
+block content
+    .row.row-content
+      .col-sm-4
+        h1= title
+      .col-sm-6
+        p(style='padding:10px')
+        a(href='/')='Back to Homepage'
+    .row.row-content
+      .col-sm-4
+        h3= poster    
+    .row.row-content
+       .col-sm-12
+        .col-sm-6
+         p= pcontent 
+    .row.row-content
+       .col-sm-12
+        .col-sm-6
+         ol
+          +commentshow(comments)

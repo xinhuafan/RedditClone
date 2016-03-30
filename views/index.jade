@@ -1,0 +1,22 @@
+extends layout
+
+mixin userinfo(posts)
+  -each post in posts
+   .col-sm-11 
+    .breadcrumb
+       a(href='/postdetail/#{post["id"]}')
+        h3.card-title=post['title']
+       h6.card-title=post['poster']
+       p.card-text=post['content']
+       a(href="#") like  
+       abber 100    
+       a(href="#") unlike  
+       abbers 100
+       
+block content
+    h2
+     a(href='/users/login.html')='Login'
+    .container
+     .row
+      +userinfo(posts)
+      

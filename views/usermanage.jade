@@ -1,0 +1,25 @@
+extends layout
+
+mixin userinfo(user)
+   - each userinf in user
+     td= userinf
+     
+     
+block content
+    .container
+      h2 User Information
+      .table-responsive
+        table.table.table-striped
+            thead
+              tr
+                th id
+                th name
+                th password
+                th Email
+                th Address
+            tbody
+              each val,index in usersinfo
+               tr(class="table-info")
+                +userinfo([val['id'],val['name'],val['password'],val['email'],val['address']])
+                td
+                 a.btn.btn-info(href='/usermanage/delete/#{val["id"]}')= 'Delete this User'
