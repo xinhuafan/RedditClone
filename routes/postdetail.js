@@ -20,7 +20,7 @@ router.route('/')
 
 .delete(function(req, res, next){
 });
-
+ 
 router.route('/:postid')
 .all(function(req,res,next) {
 

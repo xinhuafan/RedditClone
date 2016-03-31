@@ -2,7 +2,7 @@ extends layout
 
 mixin userinfo(posts)
   -each post in posts
-   .col-sm-11 
+   .col-sm-11
     .breadcrumb
        a(href='/postdetail/#{post["id"]}')
         h3.card-title=post['title']
