@@ -7,10 +7,11 @@ mixin userinfo(posts)
        a(href='/postdetail/#{post["id"]}')
         h3.card-title=post['title']
        h6.card-title=post['poster']
-       p.card-text=post['content']
+       a.card-text(href=post['content'])
+        h4='title link'
        a(href="#") like  
        abber 100    
-       a(href="#") unlike  
+       a(href="#") unlike   
        abbers 100
        
 block content

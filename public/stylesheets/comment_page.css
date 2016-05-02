@@ -1,0 +1,396 @@
+/* line 44, ../../sass/partial/comment_page.sass */
+textarea {
+  resize: none;
+}
+
+/* line 47, ../../sass/partial/comment_page.sass */
+.thread {
+  box-sizing: border-box;
+  position: relative;
+  width: 39.5em;
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 4em;
+}
+/* line 56, ../../sass/partial/comment_page.sass */
+.thread .avatar-back {
+  height: 7em;
+  width: 8em;
+  background-color: #efefef;
+  border-top-left-radius: 3.5em;
+  border-bottom-left-radius: 3.5em;
+  border: 2px solid #aaa;
+  border-right: none;
+}
+/* line 64, ../../sass/partial/comment_page.sass */
+.thread .avatar {
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  height: 6em;
+  width: 6em;
+  background-color: black;
+  border-radius: 50%;
+}
+/* line 70, ../../sass/partial/comment_page.sass */
+.thread .thread-entry {
+  box-sizing: border-box;
+  align-self: flex-start;
+  min-height: 8em;
+  width: 38em;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 0.5em;
+}
+/* line 81, ../../sass/partial/comment_page.sass */
+.thread::before {
+  position: absolute;
+  left: 3em;
+  content: "";
+  border-left: 2px solid black;
+  height: 100%;
+  z-index: -2;
+}
+
+/* line 92, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-head {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 1.8em;
+  padding-left: 1em;
+  background-color: #18FFFF;
+}
+/* line 102, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-head * {
+  padding-right: 1em;
+}
+/* line 105, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-head .thread_options {
+  padding: 0px;
+  padding-right: 0.4em;
+}
+/* line 108, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-head .thread_options a {
+  padding-left: 0.1em;
+  padding-right: 0.2em;
+}
+/* line 113, ../../sass/partial/comment_page.sass */
+.thread-entry .thread_items {
+  display: flex;
+}
+/* line 115, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-footer {
+  display: flex;
+  justify-content: space-between;
+  height: 2em;
+  align-items: center;
+}
+/* line 120, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-footer .score_buttons {
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+}
+/* line 124, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-footer .score_buttons p {
+  margin-right: 1em;
+}
+/* line 126, ../../sass/partial/comment_page.sass */
+.thread-entry .thread-footer .thread-ultility {
+  padding-right: 1em;
+}
+
+/* line 129, ../../sass/partial/comment_page.sass */
+a#filter, a#sort, a#sort-order {
+  position: relative;
+  padding-left: 1em;
+}
+/* line 132, ../../sass/partial/comment_page.sass */
+a#filter ul, a#sort ul, a#sort-order ul {
+  list-style: none;
+  position: absolute;
+  left: -1em;
+  top: 0.4em;
+  padding-left: 1em;
+}
+/* line 139, ../../sass/partial/comment_page.sass */
+a#filter ul li, a#sort ul li, a#sort-order ul li {
+  width: 8em;
+  padding-left: 0.3em;
+  background-color: #eee;
+  box-shadow: 2px 2px 4px 2px rgba(20, 20, 20, 0.4);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+/* line 147, ../../sass/partial/comment_page.sass */
+a#filter ul li:hover, a#sort ul li:hover, a#sort-order ul li:hover {
+  color: #aaa;
+}
+/* line 149, ../../sass/partial/comment_page.sass */
+a#filter ul li:first-child, a#sort ul li:first-child, a#sort-order ul li:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+/* line 152, ../../sass/partial/comment_page.sass */
+a#filter ul li:last-child, a#sort ul li:last-child, a#sort-order ul li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+/* line 155, ../../sass/partial/comment_page.sass */
+a#filter ul li p, a#sort ul li p, a#sort-order ul li p {
+  margin: 0;
+}
+/* line 157, ../../sass/partial/comment_page.sass */
+a#filter ul li i, a#sort ul li i, a#sort-order ul li i {
+  margin-right: 0.4em;
+}
+
+/* line 160, ../../sass/partial/comment_page.sass */
+.comment-block {
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 3em;
+  display: flex;
+  flex-direction: column;
+}
+/* line 166, ../../sass/partial/comment_page.sass */
+.comment-block::before {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  height: 100%;
+}
+
+/* line 173, ../../sass/partial/comment_page.sass */
+.comment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1em;
+}
+/* line 178, ../../sass/partial/comment_page.sass */
+.comment .avatar {
+  position: relative;
+  height: 5em;
+  width: 5em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+/* line 186, ../../sass/partial/comment_page.sass */
+.comment .avatar .pos {
+  position: absolute;
+  top: 0.3em;
+  left: 0.3em;
+  height: 4.4em;
+  width: 4.4em;
+  background-color: black;
+  border-radius: 50%;
+}
+/* line 195, ../../sass/partial/comment_page.sass */
+.comment .comment-entry {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 7em;
+  width: 32em;
+  background-color: #efefef;
+  border-radius: 0.2em;
+  margin-left: 1em;
+  border: 1px solid #aaa;
+  z-index: 10;
+}
+/* line 207, ../../sass/partial/comment_page.sass */
+.comment .comment-entry::before {
+  position: absolute;
+  top: 50%;
+  left: -0.5em;
+  content: "";
+  width: 1em;
+  height: 1em;
+  background-color: #efefef;
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: 50% 50%;
+  border-left: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  z-index: 1;
+}
+
+/* line 225, ../../sass/partial/comment_page.sass */
+.joint {
+  height: 2.4em;
+  width: 2.4em;
+  background-color: #aaa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset -1px -1px 5px 2px rgba(10, 10, 10, 0.4), inset 1px 1px 5px 2px rgba(220, 220, 220, 0.9);
+}
+/* line 234, ../../sass/partial/comment_page.sass */
+.joint .joint-inner {
+  height: 1.5em;
+  width: 1.5em;
+  background-color: #777;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 244, ../../sass/partial/comment_page.sass */
+.joint .fold {
+  background-color: green;
+}
+/* line 247, ../../sass/partial/comment_page.sass */
+.joint .unfold {
+  background-color: red;
+}
+
+/* line 255, ../../sass/partial/comment_page.sass */
+.comment-entry .head-bar {
+  position: relative;
+  border-top-left-radius: 0.2em;
+  border-top-right-radius: 0.2em;
+  background-color: #29B6F6;
+  height: 1.5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+/* line 264, ../../sass/partial/comment_page.sass */
+.comment-entry .head-bar p {
+  margin: 0px;
+  margin-left: 1em;
+}
+/* line 267, ../../sass/partial/comment_page.sass */
+.comment-entry .head-bar p.last_edit {
+  color: #eee;
+}
+/* line 269, ../../sass/partial/comment_page.sass */
+.comment-entry .head-bar i {
+  color: black;
+}
+/* line 271, ../../sass/partial/comment_page.sass */
+.comment-entry .head-bar .button_collection {
+  position: absolute;
+  right: 60px;
+  width: 10%;
+  display: flex;
+}
+/* line 276, ../../sass/partial/comment_page.sass */
+.comment-entry .head-bar ul.comment-menu {
+  position: absolute;
+  list-style: none;
+}
+/* line 279, ../../sass/partial/comment_page.sass */
+.comment-entry .content {
+  min-height: 5.5em;
+  width: 100%;
+}
+/* line 282, ../../sass/partial/comment_page.sass */
+.comment-entry .comment_footer {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 1em;
+}
+/* line 287, ../../sass/partial/comment_page.sass */
+.comment-entry .comment_footer .status {
+  margin-left: 0.5em;
+  display: flex;
+}
+/* line 290, ../../sass/partial/comment_page.sass */
+.comment-entry .comment_footer .status p {
+  margin-right: 1em;
+}
+
+/* line 293, ../../sass/partial/comment_page.sass */
+.button_collection {
+  position: relative;
+  align-items: center;
+}
+/* line 295, ../../sass/partial/comment_page.sass */
+.button_collection .button_name_preview {
+  position: absolute;
+  top: 0em;
+  width: 2.4em;
+  font-size: 0.8em;
+  height: 1.2em;
+  background-color: white;
+}
+/* line 303, ../../sass/partial/comment_page.sass */
+.button_collection * {
+  width: 1.5em;
+}
+
+/* line 307, ../../sass/partial/comment_page.sass */
+.content * {
+  margin-left: 1em;
+}
+/* line 310, ../../sass/partial/comment_page.sass */
+.content .comment-view button.edit_button {
+  border: 1px solid #555;
+  font-size: 1em;
+  width: 2em;
+}
+/* line 315, ../../sass/partial/comment_page.sass */
+.content .comment-view button.edit_button i {
+  margin: 0.2em;
+}
+/* line 318, ../../sass/partial/comment_page.sass */
+.content .comment-view:hover {
+  background-color: #aaa;
+  border: 1px solid #ddf;
+}
+/* line 321, ../../sass/partial/comment_page.sass */
+.content .comment-view:hover button.edit_button {
+  display: block;
+}
+/* line 324, ../../sass/partial/comment_page.sass */
+.content .edit-view {
+  display: none;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+/* line 328, ../../sass/partial/comment_page.sass */
+.content .edit-view textarea.text-edit {
+  box-sizing: border-box;
+  margin-top: 0.5em;
+  height: 3em;
+  width: 100%;
+}
+/* line 333, ../../sass/partial/comment_page.sass */
+.content .edit-view .submit_buttons {
+  align-self: flex-end;
+}
+
+/* line 337, ../../sass/partial/comment_page.sass */
+.thread_reply {
+  postion: fixed;
+  bottom: 0;
+  background: #eee;
+  min-height: 8em;
+  width: 34em;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1em;
+}
+/* line 347, ../../sass/partial/comment_page.sass */
+.thread_reply textarea#reply {
+  height: 2em;
+}
+/* line 349, ../../sass/partial/comment_page.sass */
+.thread_reply textarea#reply:focus {
+  height: 4em;
+}
+
+/* line 353, ../../sass/partial/comment_page.sass */
+i.fa-trash:hover, i.f-heart:hover {
+  color: red;
+}

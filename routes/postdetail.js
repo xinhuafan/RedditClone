@@ -1,14 +1,13 @@
-var express = require('express');
+ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var mysql = require('./mysql');
+var mysql = require('../mysql/mysql');
 
 router.use(bodyParser.json());
 
 router.route('/')
 .all(function(req,res,next) {
-      console.log('recv')
-      res.render('index', { title: 'User Login In' });
+      
       next();
 })
 
@@ -24,16 +23,21 @@ router.route('/')
 router.route('/:postid')
 .all(function(req,res,next) {
 
-    
+    if(req.session.user){
     next();
+    }
+    else{
+    req.session.error = 'Access denied!';
+    res.redirect('/users/login');
+    }
 })
 
 .get(function(req,res,next){
     sqlquery='select * from posts where id='+req.params.postid;
     sqlquery1='select * from comments where postid='+req.params.postid;
-    mysql.handle_database(req,res,sqlquery,function(rows){
-        mysql.handle_database(req,res,sqlquery1,function(crows){
-            res.render('detail', { title:rows[0].title,poster: rows[0].poster,pcontent:rows[0].content,comments:crows});
+    mysql.handle_database(sqlquery,function(rows){
+    mysql.handle_database(sqlquery1,function(crows){
+    res.render('detail', { title:rows[0].title,poster: rows[0].poster,pcontent:rows[0].content,comments:crows});
         });
     });
 })

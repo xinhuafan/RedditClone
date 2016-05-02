@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('./mysql');
+var mysql = require('../mysql/mysql');
+var accountCheck = require('../auth/accountCheck');
 
 
 
@@ -22,8 +23,18 @@ router.route('/login*')
 })
 
 .post(function(req, res){
-    var s=req.body
+    var s=req.body;
     console.log('post:'+JSON.stringify(s));
+    accountCheck.check(s.username,s.password,function checkresult(rs){
+        if(rs){
+            req.session.user=s.username;
+            //console.log(req.session);
+            res.redirect('/');
+        }else{
+        req.session.error = 'Macth denied!';
+        res.redirect('/users/login');
+        }
+    });
 
     
 })
