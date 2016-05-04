@@ -1,0 +1,17 @@
+/* line 1, ../../sass/module/index-layout.scss */
+ul.filter_control {
+  display: flex;
+  list-style-type: none;
+}
+/* line 5, ../../sass/module/index-layout.scss */
+ul.filter_control li.filter_button {
+  background-color: #e7fff3;
+}
+
+/* line 10, ../../sass/module/index-layout.scss */
+.main_chunck {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

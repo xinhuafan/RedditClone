@@ -6,29 +6,18 @@ var mysqlDAO = require('../mysql/DAO');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  var SQLquery = 'select * from posts';
-
-
-
-
-  mysql.handle_database(SQLquery,function(rows,errcode){
-      var err;
-      if(errcode<0){
-      res.render('index', { posts: rows });
-      }
-      else if(errcode==1){
-            err = new Error('SQL connection error');
-            err.status = 500;
-            next(err);
-      }else{
-            err = new Error('SQL execution error');
-            err.status = 500;
-            next(err);
-      }
-  });
+res.render('newview/newindex',{});
   
   
 });
+
+
+router.get('/newview', function(req, res, next) {
+    res.render('newview/newindex',{});
+    
+    
+});
+
 
 router.get('/newtest', function(req, res, next) {
     res.render('newtest',{});

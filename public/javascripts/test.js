@@ -3,19 +3,19 @@ $(function(){
    if(e.keyCode === 13) {
        
      var parameters = ({
-    'request' : 'getpostbyuser',
+    'request' : 'getpost',
     'postid' : $(this).val()
          
      });
      
     var jqxhr = $.ajax( {
-                url: 'ajax/getpostbyuser',
+                url: 'ajax/getposts',
                 method: "GET",
                 data: parameters,
                 dataType: 'jason'
             } )
         .always(function(data) {
-        alert( JSON.stringify(data) );
+       $('#results').text(JSON.stringify(data['responseText']).replace("\\",''));
         });
 
     }

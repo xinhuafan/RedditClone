@@ -1,0 +1,6 @@
+/* line 10, ../../sass/partial/buttons.scss */
+.button, button {
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em;
+}

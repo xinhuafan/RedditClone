@@ -1,0 +1,41 @@
+/* line 11, ../../sass/partial/user_panel.scss */
+.user_bar {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  box-shadow: 0px 2px 4px 1px rgba(10, 10, 10, 0.5);
+  background: white;
+}
+/* line 18, ../../sass/partial/user_panel.scss */
+.user_bar * {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* line 37, ../../sass/partial/user_panel.scss */
+.user .head .avatar {
+  width: 2.4em;
+  height: 2.4em;
+  background: black;
+  margin-right: 1em;
+}
+
+/* line 48, ../../sass/partial/user_panel.scss */
+.end .button-set button {
+  margin-right: 1em;
+}
+
+/* line 54, ../../sass/partial/user_panel.scss */
+button.user_bar_button {
+  box-sizing: border-box;
+  height: 2em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  background: #5c6bc0;
+  border-radius: 4px;
+  color: white;
+  border: none;
+}

@@ -1,0 +1,5 @@
+/* line 1, ../../sass/partial/main_tunck */
+.main_chunck {
+  display: flex;
+  flex-direction: row;
+}

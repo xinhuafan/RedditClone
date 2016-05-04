@@ -1,0 +1,65 @@
+/* line 13, ../../sass/partial/comment.scss */
+.comment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2em;
+}
+/* line 18, ../../sass/partial/comment.scss */
+.comment .avatar {
+  position: relative;
+  height: 5em;
+  width: 5em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+/* line 26, ../../sass/partial/comment.scss */
+.comment .avatar .pos {
+  position: absolute;
+  top: 0.3em;
+  left: 0.3em;
+  height: 4.4em;
+  width: 4.4em;
+  background-color: black;
+  border-radius: 50%;
+}
+/* line 36, ../../sass/partial/comment.scss */
+.comment .comment-entry {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 7em;
+  width: 22em;
+  background-color: #e6e6e6;
+  border-radius: 0.4em;
+  margin-left: 2em;
+  box-shadow: 2px 3px 10px 2px rgba(20, 20, 20, 0.5);
+  z-index: 10;
+}
+/* line 47, ../../sass/partial/comment.scss */
+.comment .comment-entry::before {
+  position: absolute;
+  top: 3em;
+  left: -0.5em;
+  content: "";
+  width: 1em;
+  height: 1em;
+  background-color: #e6e6e6;
+  transform: rotateZ(45deg);
+  transform-origin: 50% 50%;
+  z-index: 1;
+}
+
+/* line 76, ../../sass/partial/comment.scss */
+.comment-entry .head-bar {
+  border-top-left-radius: 0.4em;
+  border-top-right-radius: 0.4em;
+  background-color: #aaf;
+  height: 1.3em;
+  width: 100%;
+}
+/* line 82, ../../sass/partial/comment.scss */
+.comment-entry .head-bar .content {
+  width: 100%;
+}

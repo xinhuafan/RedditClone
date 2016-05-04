@@ -1,0 +1,6 @@
+/* line 4, ../../sass/partial/comment_block.scss */
+.comment {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}

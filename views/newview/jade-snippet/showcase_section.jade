@@ -1,0 +1,44 @@
+//
+   Created by Qiushuo on 4/22/2016.
+
+section#main_pade
+    .ultility-bar
+        .container
+            ul.filters
+                li#Hottest
+                    a
+                        i.fa.fa-fire
+                        p Hottest
+                li#Lastest
+                    a
+                        i.fa.fa-clock-o
+                        p Latest
+                li#Replied
+                    a
+                        i.fa.fa-commenting-o
+                        p Replied
+                li#Recommented
+                    a
+                        i.fa.fa-heart
+                        p Recommented
+            .addThead_widget
+                a.addThread
+                    i.fa.fa-plus
+                .createThread
+                    h3 create new thread
+                    p title
+                    input
+                    p content
+                    textarea
+                    button submit
+    .showcase(data-bind = "foreach: _ThreadList")
+        .showcase-item
+            .head_up
+                h2(data-bind = "text: _title") something
+                p(data-bind = "text: _submitter") by someone
+            p other
+            .thread-info
+                p replies
+                p(data-bind = "text: _replies")
+                p comments
+                p(data-bind = "text: _comments")

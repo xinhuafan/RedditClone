@@ -1,0 +1,185 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+/* line 11, ../sass/partial/user_panel.scss */
+.user_bar {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  box-shadow: 0px 2px 4px 1px rgba(10, 10, 10, 0.5);
+  background: white;
+}
+/* line 18, ../sass/partial/user_panel.scss */
+.user_bar * {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* line 37, ../sass/partial/user_panel.scss */
+.user .head .avatar {
+  width: 2.4em;
+  height: 2.4em;
+  background: black;
+  margin-right: 1em;
+}
+
+/* line 48, ../sass/partial/user_panel.scss */
+.end .button-set button {
+  margin-right: 1em;
+}
+
+/* line 54, ../sass/partial/user_panel.scss */
+button.user_bar_button {
+  box-sizing: border-box;
+  height: 2em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  background: #5c6bc0;
+  border-radius: 4px;
+  color: white;
+  border: none;
+}
+
+/* line 22, ../sass/partial/user_profile.scss */
+body {
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 32, ../sass/partial/user_profile.scss */
+ul {
+  list-style: none;
+}
+
+/* line 36, ../sass/partial/user_profile.scss */
+.profile {
+  margin: 3em;
+  width: 80%;
+  height: 90%;
+  display: flex;
+  background-color: #eeeeee;
+  box-sizing: content-box;
+  border-radius: 0.4em;
+}
+/* line 45, ../sass/partial/user_profile.scss */
+.profile > * {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* line 49, ../sass/partial/user_profile.scss */
+.profile .user_data {
+  width: 14em;
+  margin-left: 2em;
+  border-right: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+/* line 59, ../sass/partial/user_profile.scss */
+.profile .comments_widget {
+  width: 100%;
+  padding: 2em;
+  margin-left: 10px;
+}
+
+/* line 69, ../sass/partial/user_profile.scss */
+.profile_photo {
+  align-self: center;
+  width: 5em;
+  height: 5em;
+  background-color: black;
+}
+
+/* line 77, ../sass/partial/user_profile.scss */
+.statistic ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* line 82, ../sass/partial/user_profile.scss */
+.statistic ul li {
+  display: flex;
+}
+/* line 84, ../sass/partial/user_profile.scss */
+.statistic ul li p {
+  margin-right: 1em;
+}
+
+/* line 91, ../sass/partial/user_profile.scss */
+.comments_widget {
+  box-sizing: border-box;
+  width: 100%;
+}
+/* line 94, ../sass/partial/user_profile.scss */
+.comments_widget h2 {
+  font-family: "Oswald", sans-serif;
+}
+
+/* line 100, ../sass/partial/user_profile.scss */
+.comment-view {
+  box-sizing: border-box;
+  width: 100%;
+}
+/* line 103, ../sass/partial/user_profile.scss */
+.comment-view .comment-view-head {
+  height: 2em;
+  background: #fff3cf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #bbbbbb;
+}
+/* line 112, ../sass/partial/user_profile.scss */
+.comment-view .comment-view-head ul {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  font-family: "Merriweather Sans", sans-serif;
+  margin: 0px;
+}
+/* line 118, ../sass/partial/user_profile.scss */
+.comment-view .comment-view-head ul li {
+  max-width: 10em;
+  padding-right: 1em;
+}
+/* line 123, ../sass/partial/user_profile.scss */
+.comment-view .comment-view-head .button-set {
+  height: 100%;
+  display: flex;
+  border-left: 1px solid #aaaaaa;
+}
+/* line 127, ../sass/partial/user_profile.scss */
+.comment-view .comment-view-head .button-set a {
+  width: 2.5em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 144, ../sass/partial/user_profile.scss */
+.comment-show {
+  width: 100%;
+  border: 1px solid #bbbbbb;
+  box-sizing: border-box;
+}
+/* line 148, ../sass/partial/user_profile.scss */
+.comment-show .comment {
+  width: 100%;
+  height: 6em;
+}
+/* line 151, ../sass/partial/user_profile.scss */
+.comment-show .comment:nth-child(2n) {
+  background: #ffc107;
+}

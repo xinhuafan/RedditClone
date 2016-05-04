@@ -9,7 +9,7 @@ selectSQL+= ' where name="'+user+'"';
 
 var rs=false;
   mysql.handle_database(selectSQL,function(rows){
-       for (index in rows){
+       for (var index in rows){
            if(rows[index].name==user && rows[index].password==pass){
                rs=true;
            }

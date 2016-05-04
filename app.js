@@ -7,11 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
 // routers
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var postdetail = require('./routes/postdetail');
-var usermanage = require('./routes/usermanage'); 
+var usermanage = require('./routes/usermanage');
 var ajax = require('./routes/ajax'); 
 //authencation
 
@@ -31,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('Reddit Clone Project'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 //Auth
 
