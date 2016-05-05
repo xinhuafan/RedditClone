@@ -4,11 +4,75 @@ var ModelInfo = require('../Model/Cache');
 
 
 
-var pushpost=function(postid,posts,limit,i,call){
-    mysqlDAO.Func.getpost([postid],function(rows,errcode){
+
+var getindexbypostid=function(dataobj,postid){
+    for(var idx in dataobj){
+        if(dataobj[idx]['postid']==postid){
+            return idx;
+        }
+    }
+    console.log('error,cant find index by postid');
+    return -1;
+    
+}
+
+var getrepliedbyuser=function(call,userid){
+        mysqlDAO.Func.getpostsGT([],function(rows,errcode){
+        mysqlDAO.Func.getcommentbyuser([userid],function(rows2,errcode){
+            rows2=rows2.map(function(obj){
+                var postid =obj['postid'];
+                for(var row of rows){
+                    if(row['postid']==postid){
+                        return row;
+                    }
+                }
+                return {};
+            });
+            call(rows2);
+
+        });
+            
+        });
+}
+
+var getlattestposts=function(call){
+    mysqlDAO.Func.getpostsGT([],function(rows,errcode){
+        var posts=rows.sort(function(a,b){
+            return b.post_time.getTime()-a.post_time.getTime();
+        });
+        ModelInfo.readpostscount(function(dataobj){
+            for(var row in rows){
+                var inindex=getindexbypostid(dataobj,rows[row]['postid']);
+                rows[row]['count']=dataobj[inindex]['count'];
+            }
+            call(rows);
+        });
+    });
+}
+
+
+
+var gethottestposts=function(call){
+            ModelInfo.readpostscount(function(dataobj){
+            dataobj=dataobj.sort(function(a,b){
+                return b['count']-a['count'];
+            });
+            postids=dataobj.map(function(obj){
+               var mapped={'postid':obj['postid'],'count':obj['count']};
+               return mapped;
+            });
+            getsortedposts(postids,call)
+        }); 
+}
+
+
+var pushpost=function(postid,count,posts,limit,i,call){
+    mysqlDAO.Func.getpostGT([postid],function(rows,errcode){
         if (rows.length>0){
-        posts.push(rows[0]);}
-        if(itercount==limit){
+        row=rows[0];
+        row['count']=count;
+        posts.push(row);}
+        if(i==limit){
           call(posts);
 
     }
@@ -19,7 +83,8 @@ var getsortedposts = function(postids,call){
     posts=[];
     limit=postids.length-1;
     for(var i in postids){
-         pushpost(postid,posts,limit,i,call);   
+        
+         pushpost(postids[i]['postid'],postids[i]['count'],posts,limit,i,call);   
     
     }
 
@@ -97,7 +162,9 @@ var getrecpostsforusers=function(userid,call){
 }
 
 module.exports.getrecpostsforusers=getrecpostsforusers;
-module.exports.getsortedposts=getsortedposts;
+module.exports.gethottestposts=gethottestposts;
+module.exports.getlattestposts=getlattestposts;
+module.exports.getrepliedbyuser=getrepliedbyuser;
 // getrecposts test
 //getrecpostsforusers(5,function(dif){console.log(dif);})
 

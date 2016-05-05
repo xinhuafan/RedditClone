@@ -85,6 +85,28 @@ var getcommentbyuser= base('/getcommentbyuser',['userid'],mysqlDAO.Func.getcomme
 var getpostsGT= base('/getpostsGT',[],mysqlDAO.Func.getpostsGT);
 var getpostGT= base('/getpostGT',['postid'],mysqlDAO.Func.getpostGT);
 
+var getrepliedbyuser=base('/getrepliedbyuser',['userid'],function(params,call){
+        var userid=params[0];
+        Rec.getrepliedbyuser(function(posts){
+            call(posts,-1);
+        },userid);
+
+});
+
+var gethottestposts=base('/gethottestposts',[],function(params,call){
+        Rec.gethottestposts(function(posts){
+            call(posts,-1);
+        });
+
+});
+
+var getlattestposts=base('/getlattestposts',[],function(params,call){
+        Rec.getlattestposts(function(posts){
+            call(posts,-1);
+        });
+
+});
+
 var getcommentsbypostGT= base('/getcommentsbypostGT',['postid'],function(params,call){
     
     mysqlDAO.Func.getcommentsbypostGT(params,function(rows,errcode){
