@@ -41,7 +41,7 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 //routers
 app.use('/', routes);
 app.use('/users', users);
-app.use('/postdetail', postdetail);
+app.use('/post', postdetail);
 app.use('/usermanage', usermanage);
 app.use('/ajax', ajax);
 

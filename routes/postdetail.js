@@ -20,26 +20,15 @@ router.route('/')
 .delete(function(req, res, next){
 });
  
-router.route('/:postid')
+router.route('/comments?id=:postid')
 .all(function(req,res,next) {
 
-    if(req.session.user){
-    next();
-    }
-    else{
-    req.session.error = 'Access denied!';
-    res.redirect('/users/login');
-    }
+
 })
 
 .get(function(req,res,next){
-    sqlquery='select * from posts where id='+req.params.postid;
-    sqlquery1='select * from comments where postid='+req.params.postid;
-    mysql.handle_database(sqlquery,function(rows){
-    mysql.handle_database(sqlquery1,function(crows){
-    res.render('detail', { title:rows[0].title,poster: rows[0].poster,pcontent:rows[0].content,comments:crows});
-        });
-    });
+
+    res.render('newview/newindex',{});
 })
 
 .post(function(req, res, next){

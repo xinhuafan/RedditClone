@@ -1,4 +1,5 @@
 const fs = require('fs');
+var path = require('path');
 var mysqlDAO = require('../mysql/DAO');
 var getcolnamelist = function(tablename){
     var colnamelist;
@@ -39,7 +40,7 @@ var getcolnamelist = function(tablename){
         counts.push({'commentid':commentid,'like':like,'unlike':unlike,'count':count})
         console.log(itercount);
         if(itercount==limit){
-          fs.writeFile('commentscount.txt', JSON.stringify(counts), 'utf8', function(err){
+          fs.writeFile(path.resolve(__dirname, '../serverData/commentscount.txt'), JSON.stringify(counts), 'utf8', function(err){
             console.log(err);
         });  
         }
@@ -60,7 +61,7 @@ var getcolnamelist = function(tablename){
         counts.push({'postid':postid,'like':like,'unlike':unlike,'count':count})
         console.log(itercount);
         if(itercount==limit){
-          fs.writeFile('postscount.txt', JSON.stringify(counts), 'utf8', function(err){
+          fs.writeFile(path.resolve(__dirname, '../serverData/postscount.txt'), JSON.stringify(counts), 'utf8', function(err){
             console.log(err);
         });  
         }
@@ -87,7 +88,7 @@ var getcolnamelist = function(tablename){
         uservote['unlikeposts']=countunlike;
         counts.push(uservote);
         if(itercount==limit){
-          fs.writeFile('usercountvote.txt', JSON.stringify(counts), 'utf8', function(err){
+          fs.writeFile(path.resolve(__dirname, '../serverData/usercountvote.txt'), JSON.stringify(counts), 'utf8', function(err){
             console.log(err);
         });  
         }
@@ -127,8 +128,20 @@ var getcommentscount=function (commentids){
     }
 };
 
+var readuserscount=function(call){
+    fs.readFile(path.resolve(__dirname, '../serverData/usercountvote.txt'), 'utf8', function(err,data){
+            dataobj=JSON.parse(data);
+            if(err){
+                console.log(err);
+            }else{
+                call(dataobj);
+            }
+        }); 
+};
+
+
 var readpostscount=function(call){
-    fs.readFile('postscount.txt', 'utf8', function(err,data){
+    fs.readFile(path.resolve(__dirname, '../serverData/postscount.txt'), 'utf8', function(err,data){
             dataobj=JSON.parse(data);
             if(err){
                 console.log(err);
@@ -140,7 +153,7 @@ var readpostscount=function(call){
 
 
 var readcommentscount=function(call){
-    fs.readFile('commentscount.txt', 'utf8', function(err,data){
+    fs.readFile(path.resolve(__dirname, '../serverData/commentscount.txt'), 'utf8', function(err,data){
             dataobj=JSON.parse(data);
             if(err){
                 console.log(err);
@@ -177,4 +190,5 @@ var readcommentscount=function(call){
 module.exports.updatefile=updatefile;
 module.exports.readpostscount=readpostscount;
 module.exports.readcommentscount=readcommentscount;
+module.exports.readuserscount=readuserscount;
 module.exports.getcolnamelist=getcolnamelist;

@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mysqlDAO = require('../mysql/DAO');
-var ModelInfo = require('../Model/Rec');
+var ModelInfo = require('../Model/Cache');
+var Rec = require('../Model/recPost');
+var path = require('path');
 
 var base= function(url,paramnames,func){
     router.route(url)
@@ -31,6 +33,8 @@ var base= function(url,paramnames,func){
         });
     })
 }
+
+
 
 var postbase= function(url,paramnames,func){
     router.route(url)
@@ -63,9 +67,7 @@ var postbase= function(url,paramnames,func){
 
 
 
-var getRecPosts=function(userid){
-        
-}
+
 
 
 //GET
@@ -82,18 +84,47 @@ var getcommentbyuser= base('/getcommentbyuser',['userid'],mysqlDAO.Func.getcomme
 
 var getpostsGT= base('/getpostsGT',[],mysqlDAO.Func.getpostsGT);
 var getpostGT= base('/getpostGT',['postid'],mysqlDAO.Func.getpostGT);
-var getcommentsbypostGT= base('/getcommentsbypostGT',['postid'],mysqlDAO.Func.getcommentsbypostGT);
 
+var getcommentsbypostGT= base('/getcommentsbypostGT',['postid'],function(params,call){
+    
+    mysqlDAO.Func.getcommentsbypostGT(params,function(rows,errcode){
+        countlikeforcomment(function(dataobj){
+            var start=dataobj[0]['commentid'];
+            for(var row in rows){
+                var id=rows[row]['commentid'];
+                var count=dataobj[id-start]['count'];
+                rows[row]['count']=count;
+                
+            }
+            
+            call(rows,-1);
+        });
+    });
+});
 
+var getselectpostsGT= base('/getselectpostsGT',['postid'],function(params,call){
+    
+    mysqlDAO.Func.getselectpostsGT(params,function(rows,errcode){
+        countlikeforcomment(function(dataobj){
+            var start=dataobj[0]['commentid'];
+            for(var row in rows){
+                var id=rows[row]['commentid'];
+                var count=dataobj[id-start]['count'];
+                rows[row]['count']=count;
+                
+            }
+            
+            call(rows,-1);
+        });
+    });
+});
 
 
 //POST
 var loginuser=postbase('/userlogin',['username','password'],mysqlDAO.Func.loginuser)
 var createuser= postbase('/createuser',['username','password','user_avatar'],mysqlDAO.Func.createuser);
 
-
-
-
+    
 //UPDATE
 var updatecomment=postbase('/updatecomment',['comment_content','comment_time','commentid'],mysqlDAO.Func.updatecomment)
 
@@ -118,39 +149,26 @@ var commentvote= base('/commentvote',['postid','userid','like'],mysqlDAO.Func.co
 
 
 
-var pushpost=function(postid,posts,limit,i){
-    mysqlDAO.Func.getpost([postid],function(rows,errcode){
-        if (rows.length>0){
-        posts.push(rows[0]);}
-        if(itercount==limit){
-          fs.writeFile('../Model/usercountvote.txt', JSON.stringify(counts), 'utf8', function(err){
-            console.log(err);
-    });
-
-    }
-    });
-}
-
-var getsortedposts = function(postids,call){
-    posts=[];
-    limit=postids.length-1;
-    for(var i in postids){
-         pushpost(postid,posts,limit,i);   
-    
-    }
-
-}
-
-var gethottestposts= base('/gethottestposts',[],function(params,call){
-    countlikeforpost(function(dataobj){
-        dataobj.sort(function(a,b){
-            return b['count']-a['count'];
-        });
-        call(dataobj.map(function(obj){
-            return {postid:obj['postid'],'count':obj['count']};
-        }),-1);
+var getpostsGTGT= base('/getpostsGTGT',[],function(params,call){
+    mysqlDAO.Func.getpostsGT([],function(rows,errcode){
+            countlikeforpost(function(dataobj){
+            var start=dataobj[0]['postid'];
+            for(var row in rows){
+                var id=rows[row]['postid'];
+                var corelem=dataobj[id-start];
+                if(row!=18)
+                var count=corelem['count'];
+                rows[row]['count']=count;
+                
+            }
+            call(rows,-1);
+        
         
     });
+        
+    });
+    
+
 });
 
 var countlikeforpost = function(call){

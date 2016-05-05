@@ -162,6 +162,7 @@ var commentsGenerator=function(conn,times){
             orsql+=faker.lorem.sentence()+rcomma;
             orsql+=JSON.stringify(faker.date.recent())+ncomma;
             orsql+=pids[index1]+ncomma;
+            index1=Math.floor(pids.length*Math.random());
             orsql+=uids[index1]+')';
             console.log('query is=>'+orsql);
             conn.query(orsql,errhandler);
@@ -177,17 +178,31 @@ var commentsGenerator=function(conn,times){
   
 }
 
-var voteGenerator=function(conn,times){
+
+
+var voteGenerator=function(conn,time1,time2){
     
     getcomments(conn,function(prows){
         var insertSQL = 'insert into vote (islike,userid,postid,commentid) values(?,?,?,?)'
-        for(var i=0;i<times;i++)
+        for(var i=0;i<time1;i++)
         {
             var like=faker.random.boolean();
             var userid=Math.floor(Math.random()*20)+1;
-            var commentid=Math.floor(Math.random()*50)+1;
+            var commentid=Math.floor(Math.random()*100)+51;
             var postid=Math.floor(Math.random()*20)+20;
-            var params=[1,userid,null,commentid]
+            var params=[0,userid,postid,null]
+            console.log('query is=>'+insertSQL);
+            conn.query(insertSQL,params,errhandler);
+            
+        }
+        
+        for( i=0;i<time2;i++)
+        {
+             like=faker.random.boolean();
+             userid=Math.floor(Math.random()*20)+1;
+             commentid=Math.floor(Math.random()*100)+51;
+             postid=Math.floor(Math.random()*20)+20;
+             params=[0,userid,null,commentid]
             console.log('query is=>'+insertSQL);
             conn.query(insertSQL,params,errhandler);
             
@@ -206,5 +221,5 @@ var voteGenerator=function(conn,times){
 
 conn.connect();
 
-voteGenerator(conn,200);
+voteGenerator(conn,150,500);
 
