@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var postdetail = require('./routes/postdetail');
 var usermanage = require('./routes/usermanage');
 var ajax = require('./routes/ajax'); 
+var Login = require('./routes/Login'); 
 //authencation
 
 
@@ -44,6 +45,7 @@ app.use('/users', users);
 app.use('/post', postdetail);
 app.use('/usermanage', usermanage);
 app.use('/ajax', ajax);
+app.use('/Login', Login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

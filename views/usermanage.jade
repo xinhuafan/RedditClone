@@ -12,14 +12,18 @@ block content
         table.table.table-striped
             thead
               tr
+                th avatar
                 th id
                 th name
                 th password
-                th Email
-                th Address
+                th delete
             tbody
               each val,index in usersinfo
                tr(class="table-info")
-                +userinfo([val['id'],val['name'],val['password'],val['email'],val['address']])
+                td 
+                 img(src=val['user_avatar'])
+                td #{val['userid']}
+                td #{val['username']}
+                td #{val['password']}
                 td
-                 a.btn.btn-info(href='/usermanage/delete/#{val["id"]}')= 'Delete this User'
+                 a.btn.btn-info(href='/usermanage/delete/#{val["userid"]}')= 'Delete this User'

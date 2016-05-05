@@ -30,6 +30,9 @@ section.fullpage_cover
                     .remember
                         input.login(type="checkbox")#remember
                         p remember me
+                    .feed-back
+                        i.fa.fa-exclamation-circle
+                        p.alert No match information in database
                     .buttons
                         button.login#commit(data-bind = "click: SignIn") Signin
                 //login widge
@@ -48,8 +51,11 @@ section.fullpage_cover
                     .input_back
                         .input_head
                             i.fa.fa-key
-                        input.login(type="passwword" data-bind = "value: _password")
-                    button.login#next(data-bind = "click: Signup") next >
+                        input.login(type="password" data-bind = "value: _password")
+                    .warning
+                        i.fa.fa-exclamation-triangle
+                        p user name invalid change one
+                    button.login#Signup(data-bind = "click: Signup") Sign up
             //input widget
 
         //dialog body

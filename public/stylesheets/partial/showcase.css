@@ -1,35 +1,38 @@
-/* line 17, ../../sass/partial/showcase.scss */
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400italic);
+/* line 23, ../../sass/partial/showcase.scss */
 section#main_pade {
   display: flex;
   flex-direction: column;
 }
-/* line 21, ../../sass/partial/showcase.scss */
+/* line 27, ../../sass/partial/showcase.scss */
 section#main_pade .container {
   width: 80em;
   align-self: center;
 }
-/* line 25, ../../sass/partial/showcase.scss */
+/* line 31, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar {
   display: flex;
   justify-content: center;
   height: 3em;
   background: #e0f7fa;
 }
-/* line 30, ../../sass/partial/showcase.scss */
+/* line 36, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar .container {
   width: 80em;
   display: flex;
   justify-content: space-between;
   height: 100%;
 }
-/* line 36, ../../sass/partial/showcase.scss */
+/* line 42, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar ul.filters {
   display: flex;
   list-style: none;
   margin: 0;
   height: 100%;
 }
-/* line 41, ../../sass/partial/showcase.scss */
+/* line 47, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar ul.filters li, section#main_pade .ultility-bar ul.filters li.active-filter {
   height: 100%;
   display: flex;
@@ -39,8 +42,9 @@ section#main_pade .ultility-bar ul.filters li, section#main_pade .ultility-bar u
   background: #ff9800;
   transform-origin: center bottom;
   transition: transform 0.3s;
+  font-family: "Droid Sans", sans-serif;
 }
-/* line 52, ../../sass/partial/showcase.scss */
+/* line 59, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar ul.filters li a, section#main_pade .ultility-bar ul.filters li.active-filter a {
   display: flex;
   align-items: center;
@@ -49,25 +53,25 @@ section#main_pade .ultility-bar ul.filters li a, section#main_pade .ultility-bar
   padding-left: 1em;
   padding-right: 1em;
 }
-/* line 59, ../../sass/partial/showcase.scss */
+/* line 66, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar ul.filters li a:hover {
   background: yellow;
 }
-/* line 63, ../../sass/partial/showcase.scss */
+/* line 70, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar ul.filters li p, section#main_pade .ultility-bar ul.filters li.active-filter p {
   margin: 0;
 }
-/* line 70, ../../sass/partial/showcase.scss */
+/* line 77, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar ul.filters li.active-filter {
   transform-origin: center bottom;
   transform: scale(1.2);
   box-shadow: 0px 0px 3px 1px rgba(10, 20, 10, 0.4);
 }
-/* line 78, ../../sass/partial/showcase.scss */
+/* line 85, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar .addThead_widget {
   position: relative;
 }
-/* line 81, ../../sass/partial/showcase.scss */
+/* line 88, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar a.addThread {
   position: relative;
   align-self: center;
@@ -82,24 +86,24 @@ section#main_pade .ultility-bar a.addThread {
   z-index: 10;
   box-shadow: 0px 3px 4px 1px rgba(20, 20, 20, 0.6);
 }
-/* line 95, ../../sass/partial/showcase.scss */
+/* line 102, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar .createThread {
   position: absolute;
   top: 1.2em;
   right: 1.2em;
-  height: 14em;
+  height: 18em;
   width: 16em;
   background: #64b5f6;
   box-sizing: border-box;
   padding: 1em;
   box-shadow: 0px 3px 16px 1px rgba(20, 20, 20, 0.6);
 }
-/* line 105, ../../sass/partial/showcase.scss */
+/* line 112, ../../sass/partial/showcase.scss */
 section#main_pade .ultility-bar .createThread h3 {
   margin: 0.3em;
 }
 
-/* line 115, ../../sass/partial/showcase.scss */
+/* line 122, ../../sass/partial/showcase.scss */
 .showcase {
   display: flex;
   flex-direction: column;
@@ -107,7 +111,7 @@ section#main_pade .ultility-bar .createThread h3 {
   align-self: center;
   padding-top: 0.4em;
 }
-/* line 121, ../../sass/partial/showcase.scss */
+/* line 128, ../../sass/partial/showcase.scss */
 .showcase .showcase-item {
   height: 10em;
   width: 100%;
@@ -116,20 +120,24 @@ section#main_pade .ultility-bar .createThread h3 {
   padding: 0.7em;
   box-shadow: 0px 3px 10px 1px rgba(20, 20, 20, 0.6);
   margin-top: 0.6em;
+  text-decoration: none;
+  color: black;
 }
-/* line 130, ../../sass/partial/showcase.scss */
+/* line 139, ../../sass/partial/showcase.scss */
 .showcase .showcase-item h2 {
+  font-family: "Oswald", sans-serif;
   margin: 0.2em;
 }
-/* line 133, ../../sass/partial/showcase.scss */
+/* line 143, ../../sass/partial/showcase.scss */
 .showcase .showcase-item p {
   margin: 0.1em;
+  font-family: "Ubuntu", sans-serif;
 }
-/* line 136, ../../sass/partial/showcase.scss */
+/* line 147, ../../sass/partial/showcase.scss */
 .showcase .showcase-item .thread-info {
   display: flex;
 }
-/* line 138, ../../sass/partial/showcase.scss */
+/* line 149, ../../sass/partial/showcase.scss */
 .showcase .showcase-item .thread-info p {
   margin-right: 1em;
 }

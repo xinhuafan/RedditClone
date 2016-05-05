@@ -3,10 +3,19 @@ var router = express.Router();
 var mysqlDAO = require('../mysql/DAO');
 
 
-/* GET home page. */
+/* GET usermanage page. */
 router.get('/', function(req, res, next) {
+        var username='';
+    if(req.session.user){
+        
+        username=req.session.user;
+        console.log('Loging!!! '+username);
+        
+    }else{
+        console.log('no!!! '+username);
+    }
 
-res.render('newview/newindex',{});
+res.render('newview/index',{ccuserid:username});
   
   
 });

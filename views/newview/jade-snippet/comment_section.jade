@@ -4,12 +4,12 @@
 .Thread_View
     .thread
         .avatar-back
-            .avatar
+            img.avatar(data-bind = "attr: { 'src': _user_image_url}")
         .thread-entry
             .thread-head
                 .thread_items
-                    p.user_name submitter
-                    p.post_time sometimes ago
+                    p.user_name(data-bind = "text: _user_name") submitter
+                    p.post_time(data-bind = "text: _past_time")
                 .thread_options
                     a.save
                         i.fa.fa-heart
@@ -17,7 +17,7 @@
                         i.fa.fa-trash
 
             .thread-body
-                h3 This is title
+                h3(data-bind = "text: _title") This is title
                 pre(data-bind = "text: _entry")
                     | you know what about it??
                     | you know what about it??
@@ -47,25 +47,25 @@
                             li.score(data-bind = "click: sortByScore")
                                 i.fa.fa-thumbs-up
                                 p best
-                            li.score
-                                i.fa.fa-comments-o
-                                p most-commented
+                            //li.score
+                              i.fa.fa-comments-o
+                              p most-commented
                     a#sort-order.ultility_button(data-bind = "click: reverseSort")
                         i.fa.fa-sort-amount-desc
     .comment-block(data-bind = "foreach: _comment_list")
         .comment
             .avatar
                 img.pic
-                .pos
+                img.pos(data-bind = "attr: { 'src': _user_image_url}")
                 //joint: branches
-            .joint
-                .joint-inner
-                    i.fa.fa-minus
+            //.joint
+               .joint-inner
+                 i.fa.fa-minus
             .comment-entry
                 .head-bar
                     p(data-bind="text: _user_name" ).user_name user id
                     .user_identity
-                    p.last_edit poseted sometimes ago
+                    p.last_edit(data-bind = "text: _past_time") poseted sometimes ago
                     .button_collection
                         //.button_name_preview reply
                         a.reply
@@ -82,13 +82,13 @@
                 .content
                     .comment-view
                         pre(data-bind="text: _entry" ).commments something something other thing
-                        button.edit_button(data-bind = "visible: _editable")
+                        button.edit_button(data-bind = "visible: _editable, click: edit_comment")
                             i.fa.fa-pencil-square-o
                     .edit-view
-                        textarea(data-bind="value: _entry" ).text-edit
+                        textarea(data-bind="value: _entry_cache" ).text-edit
                         .submit_buttons
-                            button.submit_change submit
-                            button.cancel_change cancel
+                            button.submit_change(data-bind = "click: submit_edition") submit
+                            button.cancel_change(data-bind = "click: cancelsubmit") cancel
                 //content
                 .comment_footer
                     .score_buttons
@@ -112,3 +112,5 @@
         .reply_buttons
             button#submit_comment(data-bind = "click: reply2Thread") submit
             button#reset_comment(data-bind = "click: resetReply") reset
+
+

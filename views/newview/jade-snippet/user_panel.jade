@@ -8,13 +8,13 @@
                 p You are not login
         .end
             .button-set
-                button.user_bar_button#login_user Log in
-                button.user_bar_button#signin_user Sign in
+                button.user_bar_button#Sinup_user Sign up
+                button.user_bar_button#Signin_user Sign in
     //for log in user
     .user
         .head-info
             .avatar
-            .id your user_name
+            .id(data-bind = "text: _user_name") your user_name
         .end
             .button-set
                 button.user_bar_button#logout Logout

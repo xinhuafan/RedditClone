@@ -1,6 +1,6 @@
  var express = require('express');
 var router = express.Router();
-var mysql = require('../mysql/mysql');
+var mysqlDAO = require('../mysql/DAO');
 
 
 
@@ -8,22 +8,13 @@ var mysql = require('../mysql/mysql');
 router.route('/')
 .all(function(req,res,next) {
     
-    if(req.session.user){
-    next();
-    }
-    else{
-    req.session.error = 'Access denied!';
-    res.redirect('/users/login');
-    }
+next();
 })
 
 .get(function(req,res,next){
-    SQLquery="select * from webUser";
-    
-  mysql.handle_database(SQLquery,function(rows){
-      
-      var err;
-      if(errcode<0){
+    console.log('get it');
+    mysqlDAO.Func.getusers([],function(rows,errcode){
+        if(errcode<0){
        res.render('usermanage', { usersinfo: rows });
       }
       else if(errcode==1){
@@ -35,8 +26,8 @@ router.route('/')
             err.status = 500;
             next(err);
       }
-      
-  });
+    });
+
 })
 
 .post(function(req, res, next){

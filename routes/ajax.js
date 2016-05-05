@@ -86,12 +86,21 @@ var getpostsGT= base('/getpostsGT',[],mysqlDAO.Func.getpostsGT);
 var getpostGT= base('/getpostGT',['postid'],mysqlDAO.Func.getpostGT);
 
 var getrepliedbyuser=base('/getrepliedbyuser',['userid'],function(params,call){
-        var userid=params[0];
+        var userid=params[0]; 
         Rec.getrepliedbyuser(function(posts){
             call(posts,-1);
         },userid);
 
 });
+
+var getrecpostsforuser=base('/getrecpostsforuser',['userid'],function(params,call){
+        var userid=params[0];
+        Rec.getrecpostsforusers(userid,function(posts){
+            call(posts,-1);
+        });
+
+});
+
 
 var gethottestposts=base('/gethottestposts',[],function(params,call){
         Rec.gethottestposts(function(posts){
@@ -111,39 +120,29 @@ var getcommentsbypostGT= base('/getcommentsbypostGT',['postid'],function(params,
     
     mysqlDAO.Func.getcommentsbypostGT(params,function(rows,errcode){
         countlikeforcomment(function(dataobj){
-            var start=dataobj[0]['commentid'];
-            for(var row in rows){
-                var id=rows[row]['commentid'];
-                var count=dataobj[id-start]['count'];
-                rows[row]['count']=count;
-                
-            }
-            
-            call(rows,-1);
+            var result=rows.map(function(obj){
+                for(var elem of dataobj){
+                    if(elem.commentid==obj.commentid){
+                        obj['count']=elem['count'];
+                        break;
+                    }
+                }
+                return obj;
+            });
+            call(result,-1);
         });
     });
 });
 
 var getselectpostsGT= base('/getselectpostsGT',['postid'],function(params,call){
     
-    mysqlDAO.Func.getselectpostsGT(params,function(rows,errcode){
-        countlikeforcomment(function(dataobj){
-            var start=dataobj[0]['commentid'];
-            for(var row in rows){
-                var id=rows[row]['commentid'];
-                var count=dataobj[id-start]['count'];
-                rows[row]['count']=count;
-                
-            }
-            
-            call(rows,-1);
-        });
-    });
 });
 
 
 //POST
-var loginuser=postbase('/userlogin',['username','password'],mysqlDAO.Func.loginuser)
+var loginuser=postbase('/userlogin',['username','password'],mysqlDAO.Func.loginuser);
+
+
 var createuser= postbase('/createuser',['username','password','user_avatar'],mysqlDAO.Func.createuser);
 
     

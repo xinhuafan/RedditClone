@@ -122,7 +122,6 @@ var getbestmatch=function(dataobj,index){
     for( var cmpidx in dataobj){
         if(index!=cmpidx){
             var temp=getsm(dataobj,cmpidx,index);
-            console.log(temp+' '+cmpidx);
             if(temp>sm){
                 sm=temp;
                 best=cmpidx;
@@ -151,14 +150,25 @@ var removeduplicate=function(arr){
 }
 
 var getrecpostsforusers=function(userid,call){
-    
-    ModelInfo.readuserscount(function(dataobj){
+
+    mysqlDAO.Func.getpostsGT([],function(rows,errcode){
+        ModelInfo.readuserscount(function(dataobj){
         var index=getindexbyuserid(dataobj,userid);
         bestindex=getbestmatch(dataobj,index);
         bestuserid=dataobj[bestindex]['userid'];
         dif=removeduplicate(getdif(dataobj,index,bestindex));
+        dif=dif.map(function(obj){
+            var postid =obj;
+            for(var row of rows){
+                if(row['postid']==postid){
+                    return row;
+                }
+            }
+            return {};
+                });
         call(dif);
-    })
+        });
+    });
 }
 
 module.exports.getrecpostsforusers=getrecpostsforusers;

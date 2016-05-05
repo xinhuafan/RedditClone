@@ -1,4 +1,5 @@
-var Login_Widget = function(){
+var Login_Widget = function(current_user){
+    this._current_user = current_user
     var Login_success = {
         request: "user_login",
         state: "success",
@@ -23,6 +24,20 @@ var Login_Widget = function(){
         user_name: null
     }
 
+    function Signin_request(User_identity, password){
+        this.request = "user_signin";
+        this.username = User_identity;
+        this.password = password;
+    }
+
+    function Signup_reuqest(user_name, email, password){
+        this.request = "user_signup";
+        this.username = user_name;
+        //this.email = email;
+        this.user_avatar = null;
+        this.password = password;
+    }
+
     function SigninInfo(identity_info, password){
         var self = this;
         self._identity_info = ko.observable(identity_info);
@@ -32,27 +47,28 @@ var Login_Widget = function(){
             //console.log("sign in");
             var cur_date = new Date();
             self._signin_date = cur_date;
-            var json_1 = ko.toJSON(self);
-            console.log(json_1);
+            var signin_info = new Signin_request(self._identity_info, self._password);
+            console.log(signin_info);
             $.ajax({
-                url: parameters.url,
-                type: "POST",
-                data: json_1,
-                contentType: "application/json",
-                success: function (res) {
-                    if ($.isFunction(parameters.onSuccess)) {
-                        //parameters.onSuccess(res);
-                        console.log(res);
-                        var user_name;
-                        if(res.user_name!=null){
-                            user_name = res.user_name;
-                        }
+                url: 'http://t5q583.koding.io:1991/Login/ajax',
+                method: "POST",
+                data: ko.toJS(signin_info),
+                dataType: "json",
+                success: function (data) {
+                    alert(ko.toJSON(data));
+                    if(!data.length){
+                        console.log("data");
+                    }
+                    else{
+                        location.reload();
+                        var name = data[0].username;
+                        $(".user_bar").find("guest").toggle();
+                        $(".user_bar").find("user").toggle();
+                        $("section.fullpage_cover").toggle();
                     }
                 },
                 error: function (xhr, status, error) {
-                    if ($.isFunction(parameters.onError)) {
-                        //parameters.onError(xhr, status, error);
-                    }
+
                 }
             });
         }
@@ -65,27 +81,16 @@ var Login_Widget = function(){
         self._password = ko.observable(password);
         self.Signup = function(){
             console.log("signup");
-            var json = ko.toJSON(self);
-            console.log(json);
+            var signup_info = new Signup_reuqest(self._user_name, self._email, self._password);
             $.ajax({
-                url: url,
-                type: "POST",
-                data: json_2,
-                contentType: "application/json",
-                success: function (res) {
-                    if ($.isFunction(parameters.onSuccess)) {
-                        //parameters.onSuccess(res);
-                        console.log(res);
-                        var user_name;
-                        if(res.user_name!=null){
-                            user_name = res.user_name;
-                        }
-                    }
+                url: 'http://t5q583.koding.io:1991/ajax/createuser',
+                method: "POST",
+                data: ko.toJS(signup_info),
+                dataType: "json",
+                success: function (data) {
+                    alert(ko.toJSON(data));
                 },
                 error: function (xhr, status, error) {
-                    if ($.isFunction(onError)) {
-                        //parameters.onError(xhr, status, error);
-                    }
                 }
             });
         }
@@ -110,6 +115,8 @@ var Login_Widget = function(){
 
 
         });
+
+        $("section.fullpage_cover").hide();
 
         //
         var signin_form = new SigninInfo("","","");

@@ -40,7 +40,7 @@ var getcolnamelist = function(tablename){
         counts.push({'commentid':commentid,'like':like,'unlike':unlike,'count':count})
         console.log(itercount);
         if(itercount==limit){
-          fs.writeFile(path.resolve(__dirname, '../serverData/commentscount.j'), JSON.stringify(counts), 'utf8', function(err){
+          fs.writeFile(path.resolve(__dirname, '../serverData/commentscount.json'), JSON.stringify(counts), 'utf8', function(err){
             console.log(err);
         });  
         }
